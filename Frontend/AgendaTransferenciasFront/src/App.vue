@@ -1,52 +1,81 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+<script>
+export default {
+  name: "App",
+  data() {
+    return {
+      forms: {
+        contaOrigem: null,
+        contaDestino: null,
+        valorTrans: null,
+        dataTrans: null,
+        dataAgend: null
+      }
+    }
+  },
+  methods: {
+    salvar() {
+      console.log("Entrou na func", this.forms)
 
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(forms),
+      };
 
-postMessage("localhost:8080/transferencias")
+      fetch("http://localhost:8080/salvar", options)
+        .then(data => alert("Transferência salva com sucesso!"))
+        .catch(ex => alert("Ocorreu um erro ao salvar a transferência!"))
+    }
+  }
+}
 
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="Paçoca" />
-    </div>
-    
-  </header>
-
   <main>
-    <TheWelcome />
+    <form name="forms" v-on:submit.prevent="salvar">
+      <div class="row">       
+          <div class="form-group col-md-4">
+            <label> Conta de Origem: </label>
+            <input type="text" id="contaOrigem" name="contaOrigem" v-model="forms.contaOrigem" />
+          </div>
+          <div class="form-group col-md-4">
+            <label>Conta de Destino: </label>
+            <input type="text" id="contaDestino" name="contaDestino" v-model="forms.contaDestino" />
+          </div>
+          <div  class="form-group col-md-4">
+          <label>Valor da Transferencia: </label>
+          <input type="text" id="valorTrans" name="valorTrans" v-model="forms.valorTrans" />
+        </div>
+        
+      </div>
+      <br><br>
+      <div class="row">
+        
+        <br><br>
+        <div class="form-group col-md-4">
+          <label>Data da Transferencia: </label>
+          <input id="dataTrans" type="date" v-model="forms.dataTrans" />
+        </div>
+        <br><br>
+        <div class="form-group col-md-4">
+          <label>Data do Agendamento: </label>
+          <input id="dataAgend" type="date" v-model="forms.dataAgend" />
+        </div>
+        <br><br>
+        <div >
+          <button>Limpar</button>
+          <button type="submit">Salvar</button>
+        </div>
+      </div>
+    </form>
+
+
   </main>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-}
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>
