@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:h2:file:/data/demo
+    username: admin
+    password: admin
+    driverClassName: org.h2.Driver
+  flyway:
+    locations:db/migration
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
