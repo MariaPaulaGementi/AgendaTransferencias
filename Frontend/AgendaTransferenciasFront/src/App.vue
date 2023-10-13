@@ -35,47 +35,93 @@ export default {
 
 <template>
   <main>
-    <form name="forms" v-on:submit.prevent="salvar">
-      <div class="row">       
-          <div class="form-group col-md-4">
-            <label> Conta de Origem: </label>
-            <input type="text" id="contaOrigem" name="contaOrigem" v-model="forms.contaOrigem" />
-          </div>
-          <div class="form-group col-md-4">
-            <label>Conta de Destino: </label>
-            <input type="text" id="contaDestino" name="contaDestino" v-model="forms.contaDestino" />
-          </div>
-          <div  class="form-group col-md-4">
-          <label>Valor da Transferencia: </label>
-          <input type="text" id="valorTrans" name="valorTrans" v-model="forms.valorTrans" />
-        </div>
-        
-      </div>
-      <br><br>
+    <div class="container mt-5">
       <div class="row">
+        <div class="col-5">
+          <div class="card">
+            <div class="card-header">
+              <h2>Agendamento de Tranferências Financeiras </h2>
+            </div>
+            <div class="card-body">
+              <form name="forms" v-on:submit.prevent="salvar">
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label> Conta de Origem: </label>
+                    <input type="text" class="form-control" id="contaOrigem" name="contaOrigem"
+                      v-model="forms.contaOrigem" />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label>Conta de Destino: </label>
+                    <input type="text" id="contaDestino" class="form-control" name="contaDestino"
+                      v-model="forms.contaDestino" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-md-7">
+                    <label>Valor da Transferencia: </label>
+                    <input type="text" id="valorTrans" name="valorTrans" class="form-control"
+                      v-model="forms.valorTrans" />
+                  </div>
+                  </div>
+                <div class="row">
+                  <div class="form-group col-md-6">
+                    <label>Data da Transferencia: </label>
+                    <input id="dataTrans" type="date" class="form-control" v-model="forms.dataTrans" />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label>Data do Agendamento: </label>
+                    <input id="dataAgend" type="date" class="form-control" v-model="forms.dataAgend" />
+                  </div>
+                </div>
+                <br>
+                <div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-md-6">
+                    <button class="btn btn-secondary " type="submit">Limpar</button>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <button type="submit" class="btn btn-success ">Salvar</button>
+
+                  </div>
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+        <br>
+
         
-        <br><br>
-        <div class="form-group col-md-4">
-          <label>Data da Transferencia: </label>
-          <input id="dataTrans" type="date" v-model="forms.dataTrans" />
-        </div>
-        <br><br>
-        <div class="form-group col-md-4">
-          <label>Data do Agendamento: </label>
-          <input id="dataAgend" type="date" v-model="forms.dataAgend" />
-        </div>
-        <br><br>
-        <div >
-          <button>Limpar</button>
-          <button type="submit">Salvar</button>
+          <div class="col-7">
+            <div class="card">
+              <div class="card-header">
+                <h2>Tranferências Financeiras Agendadas</h2>
+              </div>
+              <div class="card-body">
+                <table class="table">
+                  <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Conta Origem</th>
+                    <th>Cinta Destino</th>
+                    <th>Valor da Tranferência</th>
+                    <th>Data da Transferncia</th>
+                    <th>Data do Agendamento</th>
+                  </tr>
+                </thead>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </form>
 
-
+    
   </main>
 </template>
 
 <style scoped>
+
 
 </style>
