@@ -21,7 +21,7 @@ export default {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(forms),
+        body: JSON.stringify(this.forms),
       };
 
       fetch("http://localhost:8080/salvar", options)
