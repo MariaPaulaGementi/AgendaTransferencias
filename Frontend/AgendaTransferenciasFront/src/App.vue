@@ -9,7 +9,9 @@ export default {
         valorTrans: null,
         dataTrans: null,
         dataAgend: null
-      }
+      },
+
+      listaSap: null
     }
   },
   methods: {
@@ -27,6 +29,24 @@ export default {
       fetch("http://localhost:8080/salvar", options)
         .then(data => alert("Transferência salva com sucesso!"))
         .catch(ex => alert("Ocorreu um erro ao salvar a transferência!"))
+
+      this.pesquisar()
+    },
+
+    pesquisar() {
+      const options = {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      };
+
+      fetch("http://localhost:8080/pesquisar", options)
+        .then(data => {
+          console.log("Retornou:", data)
+          this.listaSap = data
+        })
+        .catch(ex => alert("Ocorreu um erro ao recuperar transferências!"))
     }
   }
 }
@@ -48,12 +68,12 @@ export default {
                   <div class="form-group col-md-6">
                     <label> Conta de Origem: </label>
                     <input type="text" class="form-control" id="contaOrigem" name="contaOrigem"
-                      v-model="forms.contaOrigem" />
+                      v-model="forms.contaOrigem" maxLength="6" />
                   </div>
                   <div class="form-group col-md-6">
                     <label>Conta de Destino: </label>
                     <input type="text" id="contaDestino" class="form-control" name="contaDestino"
-                      v-model="forms.contaDestino" />
+                      v-model="forms.contaDestino" maxLength="6" />
                   </div>
                 </div>
                 <div class="row">
@@ -62,7 +82,11 @@ export default {
                     <input type="text" id="valorTrans" name="valorTrans" class="form-control"
                       v-model="forms.valorTrans" />
                   </div>
+                  <div class="form-group col-md-5">
+                    <label>Taxas: </label>
+                    <input type="text" id="taxas" name="taxas" class="form-control" v-model="forms.taxas" />
                   </div>
+                </div>
                 <div class="row">
                   <div class="form-group col-md-6">
                     <label>Data da Transferencia: </label>
@@ -92,36 +116,39 @@ export default {
         </div>
         <br>
 
-        
-          <div class="col-7">
-            <div class="card">
-              <div class="card-header">
-                <h2>Tranferências Financeiras Agendadas</h2>
-              </div>
-              <div class="card-body">
-                <table class="table">
-                  <thead>
+
+        <div class="col-7">
+          <div class="card">
+            <div class="card-header">
+              <h2>Tranferências Financeiras Agendadas</h2>
+            </div>
+            <div class="card-body">
+              <table class="table">
+                <thead>
                   <tr>
                     <th>Id</th>
                     <th>Conta Origem</th>
-                    <th>Cinta Destino</th>
+                    <th>Conta Destino</th>
                     <th>Valor da Tranferência</th>
                     <th>Data da Transferncia</th>
                     <th>Data do Agendamento</th>
                   </tr>
                 </thead>
-                </table>
-              </div>
+                <tbody>
+                  <tr th:each="tranferencias : ${listaSap}">
+                    <td></td>
+                  </tr>
+
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-    
+
   </main>
 </template>
 
-<style scoped>
-
-
-</style>
+<style scoped></style>
