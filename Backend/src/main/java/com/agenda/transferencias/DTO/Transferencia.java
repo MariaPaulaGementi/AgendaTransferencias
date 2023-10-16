@@ -1,11 +1,6 @@
 package com.agenda.transferencias.DTO;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -13,20 +8,28 @@ import java.util.Date;
 public class Transferencia {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String contaOrigem;
     private String contaDestino;
-    private BigDecimal valor;
+    private BigDecimal valorTrans;
     private BigDecimal taxa;
-    private Date dataTransferencia;
-    private Date dataAgendamento;
+    private Date dataTrans;
+    private Date dataAgend;
 
-    public BigDecimal calculaTotal() {
-        return this.valor.add(this.taxa);
+//    public BigDecimal calculaTotal() {
+//        return this.valor.add(this.taxa);
+//    }
+
+    public Long getId() {
+        return id;
     }
 
-    public String getContaOrigem(){
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getContaOrigem() {
         return contaOrigem;
     }
 
@@ -42,12 +45,12 @@ public class Transferencia {
         this.contaDestino = contaDestino;
     }
 
-    public BigDecimal getValor() {
-        return valor;
+    public BigDecimal getValorTrans() {
+        return valorTrans;
     }
 
-    public void setValor(BigDecimal valor) {
-        this.valor = valor;
+    public void setValorTrans(BigDecimal valorTrans) {
+        this.valorTrans = valorTrans;
     }
 
     public BigDecimal getTaxa() {
@@ -58,28 +61,19 @@ public class Transferencia {
         this.taxa = taxa;
     }
 
-    public Date getDataTransferencia() {
-        return dataTransferencia;
+    public Date getDataTrans() {
+        return dataTrans;
     }
 
-    public void setDataTransferencia(Date dataTransferencia) {
-        this.dataTransferencia = dataTransferencia;
+    public void setDataTrans(Date dataTrans) {
+        this.dataTrans = dataTrans;
     }
 
-    public Date getDataAgendamento() {
-        return dataAgendamento;
+    public Date getDataAgend() {
+        return dataAgend;
     }
 
-    public void setDataAgendamento(Date dataAgendamento) {
-        this.dataAgendamento = dataAgendamento;
+    public void setDataAgend(Date dataAgend) {
+        this.dataAgend = dataAgend;
     }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
 }

@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class TransferenciasApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TransferenciasApplication.class, args);
+		SpringApplication.run(TransferenciasApplication.class);
 	}
 
 }
