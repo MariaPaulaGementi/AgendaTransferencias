@@ -2,17 +2,11 @@ package com.agenda.transferencias;
 
 import com.agenda.transferencias.DTO.Transferencia;
 import com.agenda.transferencias.Repository.TransferenciaRepository;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.gson.GsonAutoConfiguration;
 import org.springframework.web.bind.annotation.*;
-
 import java.math.BigDecimal;
-import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
@@ -88,13 +82,7 @@ public class TransferenciasController {
     }
 
     @GetMapping("pesquisar")
-    public String pesquisar(){
-        List<Transferencia> list = (List<Transferencia>) repository.findAll();
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            return mapper.writeValueAsString(list);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
+    public List<Transferencia> pesquisar(){
+        return (List<Transferencia>) repository.findAll();
     }
 }
