@@ -42,8 +42,9 @@ export default {
       };
 
       fetch("http://localhost:8080/pesquisar", options)
+        .then(response => response.json())
         .then(data => {
-          console.log("Retornou:", data)
+          console.log("Valor retornado:", data)
           this.listaSap = data
         })
         .catch(ex => alert("Ocorreu um erro ao recuperar transferências!"))
