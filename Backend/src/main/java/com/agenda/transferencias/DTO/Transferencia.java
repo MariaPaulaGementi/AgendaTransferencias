@@ -1,6 +1,10 @@
 package com.agenda.transferencias.DTO;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -10,16 +14,22 @@ public class Transferencia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotEmpty
     private String contaOrigem;
+    @NotEmpty
     private String contaDestino;
+    @NotNull
     private BigDecimal valorTrans;
     private BigDecimal taxa;
+    @NotNull
     private Date dataTrans;
+    @NotNull
     private Date dataAgend;
 
-//    public BigDecimal calculaTotal() {
-//        return this.valor.add(this.taxa);
-//    }
+    public BigDecimal calculaTotal() {
+        return this.valorTrans.add(this.taxa);
+    }
 
     public Long getId() {
         return id;
