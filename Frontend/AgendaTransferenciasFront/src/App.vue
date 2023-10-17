@@ -11,7 +11,7 @@ export default {
         dataAgend: null
       },
 
-      listaSap: null
+      lista: null
     }
   },
   methods: {
@@ -45,10 +45,11 @@ export default {
         .then(response => response.json())
         .then(data => {
           console.log("Valor retornado:", data)
-          this.listaSap = data
+          this.lista = data
         })
         .catch(ex => alert("Ocorreu um erro ao recuperar transferências!"))
     }
+    
   }
 }
 
@@ -58,7 +59,7 @@ export default {
   <main>
     <div class="container mt-5">
       <div class="row">
-        <div class="col-5">
+        <div class="col-10">
           <div class="card">
             <div class="card-header">
               <h2>Agendamento de Tranferências Financeiras </h2>
@@ -78,21 +79,18 @@ export default {
                   </div>
                 </div>
                 <div class="row">
-                  <div class="form-group col-md-7">
+                  <div class="form-group col-md-6">
                     <label>Valor da Transferencia: </label>
                     <input type="text" id="valorTrans" name="valorTrans" class="form-control"
                       v-model="forms.valorTrans" />
                   </div>
-                  <div class="form-group col-md-5">
-                    <label>Taxas: </label>
-                    <input type="text" id="taxas" name="taxas" class="form-control" v-model="forms.taxas" />
-                  </div>
-                </div>
-                <div class="row">
                   <div class="form-group col-md-6">
                     <label>Data da Transferencia: </label>
                     <input id="dataTrans" type="date" class="form-control" v-model="forms.dataTrans" />
                   </div>
+                </div>
+                <div class="row">
+
                   <div class="form-group col-md-6">
                     <label>Data do Agendamento: </label>
                     <input id="dataAgend" type="date" class="form-control" v-model="forms.dataAgend" />
@@ -102,12 +100,11 @@ export default {
                 <div>
                 </div>
                 <div class="row">
-                  <div class="form-group col-md-6">
+                  <div class="form-group col-md-3">
                     <button class="btn btn-secondary " type="submit">Limpar</button>
                   </div>
-                  <div class="form-group col-md-6">
+                  <div class="form-group col-md-3">
                     <button type="submit" class="btn btn-success ">Salvar</button>
-
                   </div>
                 </div>
 
@@ -115,10 +112,10 @@ export default {
             </div>
           </div>
         </div>
-        <br>
-
-
-        <div class="col-7">
+     
+      <br>
+      <div class="container mt-4"></div>
+        <div class="col-10">
           <div class="card">
             <div class="card-header">
               <h2>Tranferências Financeiras Agendadas</h2>
@@ -131,15 +128,26 @@ export default {
                     <th>Conta Origem</th>
                     <th>Conta Destino</th>
                     <th>Valor da Tranferência</th>
+                    <th>Taxa</th> 
+                     <th title="Soma do Total da Transferencia + a Taxa.">Valor Total</th>
                     <th>Data da Transferncia</th>
                     <th>Data do Agendamento</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr th:each="tranferencias : ${listaSap}">
-                    <td></td>
-                  </tr>
 
+
+                  <tr v-for="trans in lista">
+                    <th scope="row">{{ trans.id }}</th>
+                    <td>{{ trans.contaOrigem }}</td>
+                    <td>{{ trans.contaDestino }}</td> 
+                    <td>{{ trans.valorTrans.toFixed(2)}}</td>
+                    <td>{{ trans.taxa }}</td>
+                    <td>{{ trans.valorTrans + trans.taxa}}</td>
+                    <td>{{ trans.dataTrans }}</td>
+                    <td>{{ trans.dataAgend}}</td>
+
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -147,7 +155,6 @@ export default {
         </div>
       </div>
     </div>
-
 
   </main>
 </template>
