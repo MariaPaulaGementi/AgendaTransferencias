@@ -1,13 +1,14 @@
 <h1 align="center"> Cadastro de Agendamentos de Transferências </h1>
 
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
+
 `FrontEnd `: Node.js-V18.18.1, HTML, CSS, JavaScript, Boostrap-V2.23.1, Vue-V3.3.4
 
-### BackEnd: Java 17, Spring Boot-V3.1.4
+`BackEnd `: Java 17, Spring Boot-V3.1.4
 
-### Banco: H2
+`Banco `: H2
 
-### IDE: IntelliJ
+`IDE `: IntelliJ
 
 Intuito do Projeto: A função do sistema é o cadastro de Agendamento de Transferências, possuindo taxas dependendo do valor da transferência, data de Agendamento ou data de transferencia.
 
