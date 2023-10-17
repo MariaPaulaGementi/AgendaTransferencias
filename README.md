@@ -11,9 +11,10 @@
 
 Intuito do Projeto: A função do sistema é o cadastro de Agendamento de Transferências, possuindo taxas dependendo do valor da transferência, data de Agendamento ou data de transferencia.
 
-- `Funcionalidade 1`: Na tela temos o cadastro de transferencias;
-- `Funcionalidade 2`: Logo após salvar é carregado o histórico de transferências.
-- 
+- `Funcionalidade 1`: Cadastro de transferencias;
+- `Funcionalidade 2`: Histórico de transferências.
+- `Funcionalidade 2`: Cálculo de Taxas.
+  
  ![image](https://github.com/MariaPaulaGementi/AgendaTransferencias/assets/147748276/b2167abc-b293-46ee-a178-8339dd72098b)
 
 Para consultar o banco H2 
