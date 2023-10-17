@@ -28,8 +28,12 @@ Consultando o Banco H2:
 
 -Baixe os compronentes para rodar esse projeto (Node.js-V18.18.1, HTML, CSS, JavaScript, Boostrap-V2.23.1, Vue-V3.3.4, Java 17, Spring Boot-V3.1.4) ;
 
+-Abra o cmd na pasta do front do projeto e de um npm install;
+
+-Ainda no cmd na pasta do front já pode dar npm run dev - Startou o Node.js ;
+
 -Para acessar o Banco clique no link http://localhost:8080/h2-console/login.jsp?jsessionid=4a38d3185b638558fd6571a999ebb298 ;
 
--Starte o Node.js e o Spring Boot ;
+-Starte o Spring Boot ;
 
 Pronto, só utilizar o projeto !
